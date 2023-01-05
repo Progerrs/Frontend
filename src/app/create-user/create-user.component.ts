@@ -47,7 +47,7 @@ export class CreateUserComponent implements OnInit{
   }
   ngOnInit() {
     this.rout.Id = Number(this.route.snapshot.paramMap.get('id'));
-    if (this.rout.Id != null) {
+    if (this.rout.Id != 0) {
       this.createMode = false
     } else {
       this.createMode = true
@@ -61,7 +61,6 @@ export class CreateUserComponent implements OnInit{
       this.httpClient.post(url, this.create).subscribe()
     } else {
       const update = {...this.create, ...this.rout}
-      console.log(update)
       this.httpClient.put(url, update).subscribe()
     }
 
